@@ -5,18 +5,37 @@
  *  @return {Object} an object containing the two factors used to produce
  *                   the palindromeNumber and the palindromeNumber itself.
  */
-module.exports = function(digits){
-  var factor_0 = 0;
-  var factor_1 = 0;
-  var palindromeNumber = 0;
+function largestPal(){
+  var numProduct=[];
+  var palArray = [];
 
-  // do your work here
+ 
 
+	function product (){
+		for (var i=10; i<100; i++){
+			for(j=10; j<100; j++){
+				numProduct.push(i*j);
+			}
+		}
+		
 
+		for (var t=1; t<numProduct.length; t++) {
+			var rev = numProduct[t].toString().split('').reverse().join('');
+			var numRev = Number(rev);
+			if (numProduct[t] === numRev) {
+				palArray.push(numProduct[t]);
+			}
+
+			
+		}
+		return palArray[palArray.length-1];
+	}
 
   return {
-    factor_0 : factor_0,
-    factor_1 : factor_1,
-    palindromeNumber : palindromeNumber
+    
+    product,
   };
-};
+
+}
+var test = largestPal();
+console.log(test.product());
